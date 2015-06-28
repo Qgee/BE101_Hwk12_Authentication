@@ -1,0 +1,15 @@
+<h1> Author Details </h1>
+
+<%= flash[:notice] if flash[:notice] %>
+<%= flash[:alert] if flash[:alert] %> 
+
+<h3><%= @author.first_name + " " + @author.last_name %> </h3>
+
+<ul>
+  <li> First Name: <%= @author.first_name %> </li> 
+  <li> Last Name: <%= @author.last_name %> </li>
+<ul>
+<br>
+<%= button_to "Back", authors_path, method: :get %>
+<%= button_to "Edit", edit_author_path(@author), method: :get %>
+

@@ -1,0 +1,32 @@
+<h1>List of All Authors</h1>
+
+<h5><i>  <%= flash[:notice] if flash[:notice] %>
+      <%= flash[:alert] if flash[:alert] %>
+</i></h5>
+
+  <ul id="author_list">
+    <%= @authors.each do |author| %>
+      <% author_name = author.first_name + " " + author.last_name %>
+      <li>
+        <%= link_to(author_name, author_path(author), method: :get) %> 
+        &ndash;
+        <%=  link_to("Delete", author_path(author), method: :delete) %> 
+        
+      </li>
+    <% end %>
+  </ul>
+
+
+<h3> Add Author </h3>
+
+<%= form_for @author do |f| %>
+  <%= f.label :first_name %>: 
+  <%= f.text_field :first_name %> <br><br>
+
+  <%= f.label :last_name %>: 
+  <%= f.text_field :last_name %>  <br>
+
+  <%= f.submit %>
+<% end %>
+
+

@@ -1,0 +1,40 @@
+<h1> These are all the post titles </h1>
+
+<%= flash[:notice] if flash[:notice] %>
+<%= flash[:alert] if flash[:alert] %>
+ 
+<ul>
+	<% @posts.each do |post|  %>
+		<% title = post.title %>
+
+		<li> <%= link_to(title, post_path(post),method: :get) %> &ndash;
+			 <%= link_to("Delete", post_path(post.id), method: :delete) %>
+		</li>
+
+	<% end %>
+ 
+</ul>
+
+<br><br><br>
+
+<h3>  Add a new post here  </h3>
+<%= form_for @post do |f|		%>
+	<%=  	f.label :title 		%>:
+	<%= 	f.text_field :title %><br />
+
+	<%=		f.label :post 		%>:
+	<%=		f.text_field :post 	%><br />
+
+	<%=		f.submit  			%>
+<% end %>
+
+<!-- *************************************************************
+***THIS CODE IS THROWING A CSRF TOKEN AUTHENTICITY ERROR ****
+*************************************************************
+ --><!-- <form method="POST" action="/posts">
+	<label for="Title">Title</label>
+	<input type="string" name="title" id="title_box"><br><br>
+	<label for="Post">Post</label>
+	<input type="string" name="post" id="post_box">
+	<input type="submit">
+</form> -->
