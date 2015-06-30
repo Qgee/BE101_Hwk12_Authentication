@@ -12,10 +12,21 @@
     <li><a href= posts >Posts</a></li>
     <li><a href= authors >Authors</a></li>
     <li><a href="#">About</a></li>
-    <li><a href="#">Contact</a></li>
+
+    <% if current_user %>
+      <li>Logged In As: <%= current_user.full_name %> <%= link_to("Sign Out", sign_in_path, method: :delete)%></li>
+    <% else %>
+      <li><a href= sign_in >Sign In</a></li>
+    <% end %>
   </ul>
 
-<%= yield %>
+  <br>
+  <br>
+  
+  <%= flash[:notice] if flash[:notice] %>
+  <%= flash[:alert] if flash[:alert] %>
+
+  <%= yield %>
 
 </body>
 </html>

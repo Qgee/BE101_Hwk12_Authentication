@@ -1,5 +1,7 @@
 class AuthorsController < ApplicationController
 
+before_action :authenticate
+
   def index
     @authors = Author.all
     @author = Author.new
